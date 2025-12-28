@@ -1,4 +1,4 @@
-# AvaDesk - AI Receptionist Assistant
+# Advoca AI - AI Receptionist Assistant
 
 This is a web-based AI receptionist assistant for law firms. The agent can welcome clients, understand their issue, collect their information, categorize their legal matter, and prepare a structured intake for the lawyers.
 
