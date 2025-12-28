@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import smtplib
 from email.mime.text import MIMEText
+import os
 
 LAW_QUESTIONS = {
     "Commercial Law": [
@@ -289,7 +290,11 @@ def send_email(subject, body):
 def main():
     st.set_page_config(layout="centered", page_title="Advoca AI")
 
-    with open("style.css") as f:
+    # Construct the absolute path to the CSS file
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    css_file_path = os.path.join(script_dir, "style.css")
+
+    with open(css_file_path) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
     st.title("Advoca AI")
