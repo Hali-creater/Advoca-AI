@@ -287,12 +287,12 @@ def send_email(subject, body):
         return False
 
 def main():
-    st.set_page_config(layout="centered", page_title="AvaDesk")
+    st.set_page_config(layout="centered", page_title="Advoca AI")
 
     with open("style.css") as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-    st.title("AvaDesk")
+    st.title("Advoca AI")
 
     # Initialize session state
     if 'law_type' not in st.session_state:
@@ -307,7 +307,7 @@ def main():
     # Display initial law type selection
     if st.session_state.law_type is None:
         if not st.session_state.chat_history:
-            st.session_state.chat_history.append({"role": "assistant", "content": "Welcome to AvaDesk. I am an AI Receptionist Assistant. Please select the type of law case you have."})
+            st.session_state.chat_history.append({"role": "assistant", "content": "Welcome to Advoca AI. I am an AI Receptionist Assistant. Please select the type of law case you have."})
 
         for message in st.session_state.chat_history:
             role = message["role"]
@@ -322,6 +322,7 @@ def main():
                 if st.button(law_type, key=law_type):
                     st.session_state.law_type = law_type
                     st.session_state.lead_data['law_type'] = law_type
+                    st.session_state.chat_history.append({"role": "user", "content": law_type})
                     questions = LAW_QUESTIONS[st.session_state.law_type]
                     st.session_state.chat_history.append({"role": "assistant", "content": questions[0]['question']})
                     st.rerun()
